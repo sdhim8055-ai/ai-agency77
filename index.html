@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Omnivexx - Autonomous Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=Sora:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#001944",
+                      "secondary": "#afc6ff",
+                      "surface": "#131313",
+                      "on-tertiary-container": "#51504f",
+                      "error": "#ffb4ab",
+                      "on-surface": "#e5e2e1",
+                      "on-secondary-container": "#002760",
+                      "inverse-on-surface": "#313030",
+                      "primary-container": "#00d4ff",
+                      "surface-tint": "#3cd7ff",
+                      "tertiary": "#e1dedd",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e5e2e1",
+                      "tertiary-container": "#c5c2c2",
+                      "surface-container-highest": "#353534",
+                      "on-primary-container": "#00586b",
+                      "background": "#131313",
+                      "primary-fixed-dim": "#3cd7ff",
+                      "on-primary-fixed": "#001f27",
+                      "surface-container": "#201f1f",
+                      "error-container": "#93000a",
+                      "primary": "#a8e8ff",
+                      "secondary-fixed-dim": "#afc6ff",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed-variant": "#00429a",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "on-tertiary": "#313030",
+                      "on-error": "#690005",
+                      "surface-dim": "#131313",
+                      "on-surface-variant": "#bbc9cf",
+                      "on-secondary": "#002d6d",
+                      "secondary-fixed": "#d9e2ff",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-fixed-variant": "#004e5f",
+                      "inverse-primary": "#00677e",
+                      "surface-bright": "#393939",
+                      "inverse-surface": "#e5e2e1",
+                      "outline-variant": "#3c494e",
+                      "secondary-container": "#548dff",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-container-lowest": "#0e0e0e",
+                      "tertiary-fixed": "#e5e2e1",
+                      "outline": "#859398",
+                      "primary-fixed": "#b4ebff",
+                      "on-primary": "#003642",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "tertiary-fixed-dim": "#c9c6c5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-sm": "12px",
+                      "stack-md": "24px",
+                      "base": "8px",
+                      "margin-desktop": "40px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "stack-lg": "48px"
+              },
+              "fontFamily": {
+                      "subheading": ["Inter"],
+                      "headline-lg-mobile": ["Sora"],
+                      "headline-lg": ["Sora"],
+                      "mono-data": ["Geist"],
+                      "body-md": ["Inter"],
+                      "headline-xl": ["Sora"],
+                      "label-sm": ["Geist"]
+              },
+              "fontSize": {
+                      "subheading": ["18px", {"lineHeight": "1.5", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "mono-data": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .blueprint-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glow-hover {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), inset 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+        .primary-gradient-btn {
+            background: linear-gradient(90deg, #001944 0%, #00d4ff 100%);
+        }
+        .glass-card {
+            background: rgba(19, 19, 19, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .glass-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .data-gradient {
+            background: linear-gradient(180deg, rgba(168, 232, 255, 0.8) 0%, rgba(168, 232, 255, 0) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .header-transition {
+            transition: all 0.4s ease;
+        }
+        .header-scrolled {
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
+            background-color: rgba(19, 19, 19, 0.85) !important;
+            backdrop-filter: blur(24px) !important;
+        }
+        @keyframes bg-pulse-anim {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.05); filter: brightness(1.2); }
+        }
+        .bg-pulse-anim {
+            animation: bg-pulse-anim 15s ease-in-out infinite;
+        }
+        .magnetic {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md blueprint-grid min-h-screen flex flex-col relative overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<div class="fixed inset-0 z-[-2] pointer-events-none opacity-50 bg-pulse-anim">
+    {{DATA:SCREEN:SCREEN_7}}
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.5)] header-transition" id="site-header">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-5 max-w-container-max mx-auto header-transition" id="header-inner">
+<div class="flex items-center gap-2">
+<img alt="Omnivexx Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLto7zld-O7B9rcyd0nqtkdCQSJeExSD_fiyQ35tOohkJuTU0QF0TS7kXLy4XwGYaueLTcXH01J8rV7XvZ1imKJylJ6cXOIxIJ3qDqNckk2Q-SJM-fFYyWDfxRh059eIXRrrxL20lgej_IthzOwVam7y52fRCy6qC_4ZLzzB8DGcxTYKpgdfvbWT7VEU4SUTUNDjMBodrCEt7EA8smUB55FDT82-fawDDfWVyoyfeQOprBikr7YNM1vMpA"/>
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary tracking-tighter">Omnivexx</span>
+</div>
+<nav class="hidden md:flex items-center gap-10 font-subheading text-subheading">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Agents</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Case Studies</a>
+</nav>
+<button class="magnetic primary-gradient-btn text-white px-6 py-2.5 rounded-lg font-subheading text-subheading transition-all duration-300 glow-hover hover:scale-105 active:scale-95">
+<span class="magnetic-inner inline-block pointer-events-none">Get Started</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pt-[120px]">
+<!-- Hero Section -->
+<section class="relative px-margin-mobile md:px-margin-desktop py-32 md:py-48 max-w-container-max mx-auto flex flex-col items-center justify-center text-center reveal-on-scroll is-visible">
+<div class="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
+<!-- Abstract glowing orb effect -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container/10 rounded-full blur-[120px]"></div>
+</div>
+<div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary font-label-sm text-label-sm mb-10 tracking-widest uppercase hover:bg-primary/10 transition-colors duration-300 cursor-default group">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,212,255,0.8)] group-hover:shadow-[0_0_20px_rgba(0,212,255,1)] group-hover:bg-white transition-all duration-300"></span>
+                SYSTEMS ONLINE
+            </div>
+<h1 class="font-headline-xl text-[56px] leading-[1.1] md:text-[72px] mb-8 max-w-5xl text-transparent bg-clip-text bg-gradient-to-br from-white via-on-surface to-primary/80 font-bold tracking-tight">
+                Scale with Autonomous Precision
+            </h1>
+<p class="font-subheading text-subheading md:text-[20px] text-on-surface-variant max-w-3xl mb-12 leading-relaxed">
+                Orchestrate intelligent workflows and deploy custom AI agents that execute complex tasks seamlessly. Turn your data into decisive action.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="magnetic primary-gradient-btn text-white px-10 py-4 rounded-xl font-subheading text-subheading transition-all duration-300 glow-hover hover:scale-105 active:scale-95 flex items-center justify-center gap-3">
+<span class="magnetic-inner inline-flex items-center gap-3 pointer-events-none">
+                        Get Started
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</span>
+</button>
+<button class="magnetic glass-card text-on-surface hover:text-primary border border-white/10 hover:border-primary/50 px-10 py-4 rounded-xl font-subheading text-subheading transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-3">
+<span class="magnetic-inner inline-flex items-center gap-3 pointer-events-none">
+<span class="material-symbols-outlined">play_circle</span>
+                        Watch Demo
+                    </span>
+</button>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="border-y border-white/5 bg-surface-container-low/30 py-20 reveal-on-scroll">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<p class="font-mono-data text-mono-data text-on-surface-variant/60 mb-10 uppercase tracking-[0.2em]">Trusted by industry leaders</p>
+<div class="flex flex-wrap justify-center gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+<!-- Dummy Logos representing clients, using basic shapes for minimalist tech feel -->
+<div class="flex items-center gap-3 font-headline-lg-mobile text-[22px] text-on-surface hover:text-primary transition-colors duration-300 cursor-pointer"><span class="material-symbols-outlined text-3xl">hexagon</span> Acorn Corp</div>
+<div class="flex items-center gap-3 font-headline-lg-mobile text-[22px] text-on-surface hover:text-primary transition-colors duration-300 cursor-pointer"><span class="material-symbols-outlined text-3xl">change_history</span> Zenith</div>
+<div class="flex items-center gap-3 font-headline-lg-mobile text-[22px] text-on-surface hover:text-primary transition-colors duration-300 cursor-pointer"><span class="material-symbols-outlined text-3xl">all_inclusive</span> Nexus Systems</div>
+<div class="flex items-center gap-3 font-headline-lg-mobile text-[22px] text-on-surface hover:text-primary transition-colors duration-300 cursor-pointer"><span class="material-symbols-outlined text-3xl">webhook</span> OmniData</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto reveal-on-scroll">
+<div class="text-center mb-20">
+<h2 class="font-headline-lg-mobile md:text-[40px] leading-tight font-bold mb-6">Core Infrastructure</h2>
+<p class="font-subheading text-subheading md:text-[20px] text-on-surface-variant max-w-2xl mx-auto">The building blocks for your autonomous enterprise.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[340px]">
+<!-- Feature 1: Process Automation (Large Card) -->
+<div class="md:col-span-8 glass-card rounded-2xl p-10 relative overflow-hidden group transition-all duration-500 flex flex-col justify-between hover:shadow-[0_0_40px_rgba(0,212,255,0.2)] hover:border-primary/50">
+<div class="absolute -top-10 -right-10 p-4 opacity-5 group-hover:opacity-10 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
+<span class="material-symbols-outlined text-[200px] text-primary">account_tree</span>
+</div>
+<div class="relative z-10">
+<div class="w-14 h-14 rounded-xl bg-surface-container border border-white/10 flex items-center justify-center mb-6 text-primary shadow-[0_0_15px_rgba(0,212,255,0.2)] group-hover:shadow-[0_0_25px_rgba(0,212,255,0.4)] group-hover:bg-primary/10 transition-all duration-500">
+<span class="material-symbols-outlined text-2xl">settings_suggest</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 text-white group-hover:text-primary transition-colors duration-300">Process Automation</h3>
+<p class="text-on-surface-variant max-w-md text-lg leading-relaxed">Streamline operations with deterministic workflows. Connect disparate systems and eliminate manual oversight with guaranteed precision.</p>
+</div>
+<div class="font-mono-data text-mono-data text-primary mt-auto relative z-10 group-hover:tracking-wider transition-all duration-300">
+<span class="opacity-50">#</span> SYSTEM_EFFICIENCY_↑400%
+                    </div>
+</div>
+<!-- Feature 2: Custom AI Agents (Tall Card) -->
+<div class="md:col-span-4 glass-card rounded-2xl p-10 relative overflow-hidden group transition-all duration-500 flex flex-col justify-between hover:shadow-[0_0_40px_rgba(0,212,255,0.2)] hover:border-primary/50">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative z-10">
+<div class="w-14 h-14 rounded-xl bg-surface-container border border-white/10 flex items-center justify-center mb-6 text-primary shadow-[0_0_15px_rgba(0,212,255,0.2)] group-hover:shadow-[0_0_25px_rgba(0,212,255,0.4)] group-hover:bg-primary/10 transition-all duration-500">
+<span class="material-symbols-outlined text-2xl">robot_2</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 text-white group-hover:text-primary transition-colors duration-300">Custom AI Agents</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">Deploy specialized agents trained on your proprietary data. They analyze, decide, and act autonomously within defined parameters.</p>
+</div>
+<div class="mt-10 p-5 bg-surface-container-highest/50 rounded-xl border border-white/5 backdrop-blur-md relative z-10 group-hover:bg-surface-container-highest transition-colors duration-300 cursor-pointer hover:border-primary/30">
+<div class="flex justify-between items-center mb-3 font-mono-data text-[13px]">
+<span class="text-on-surface/80">Agent_01</span>
+<span class="text-primary flex items-center gap-2 tracking-wide group-hover:text-white transition-colors duration-300"><span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_5px_rgba(0,212,255,1)] group-hover:shadow-[0_0_15px_rgba(255,255,255,1)] group-hover:bg-white transition-all duration-300"></span> ACTIVE</span>
+</div>
+<div class="h-1.5 bg-black/50 w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 shadow-[0_0_10px_rgba(0,212,255,0.5)] group-hover:shadow-[0_0_15px_rgba(0,212,255,0.8)] group-hover:w-full transition-all duration-1000"></div>
+</div>
+</div>
+</div>
+<!-- Feature 3: Data Intelligence (Wide Card) -->
+<div class="md:col-span-12 glass-card rounded-2xl p-10 relative overflow-hidden group transition-all duration-500 flex flex-col md:flex-row gap-12 items-center hover:shadow-[0_0_40px_rgba(0,212,255,0.2)] hover:border-primary/50">
+<div class="flex-1 relative z-10">
+<div class="w-14 h-14 rounded-xl bg-surface-container border border-white/10 flex items-center justify-center mb-6 text-primary shadow-[0_0_15px_rgba(0,212,255,0.2)] group-hover:shadow-[0_0_25px_rgba(0,212,255,0.4)] group-hover:bg-primary/10 transition-all duration-500">
+<span class="material-symbols-outlined text-2xl">monitoring</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 text-white group-hover:text-primary transition-colors duration-300">Data Intelligence</h3>
+<p class="text-on-surface-variant max-w-xl text-lg leading-relaxed">Transform raw data into actionable insights in real-time. Our orchestration engine identifies patterns human analysts miss.</p>
+</div>
+<!-- Decorative Chart Element -->
+<div class="flex-1 w-full h-40 flex items-end gap-3 px-6 relative z-10">
+<div class="w-1/6 bg-gradient-to-t from-primary/30 to-transparent h-[30%] rounded-t-md transition-all duration-500 group-hover:h-[45%] group-hover:from-primary/50"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/40 to-transparent h-[50%] rounded-t-md transition-all duration-500 group-hover:h-[65%] group-hover:from-primary/60"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/50 to-transparent h-[40%] rounded-t-md transition-all duration-500 group-hover:h-[55%] group-hover:from-primary/70"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/70 to-transparent h-[70%] rounded-t-md transition-all duration-500 group-hover:h-[85%] group-hover:from-primary/80"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/90 to-transparent h-[90%] rounded-t-md relative transition-all duration-500 group-hover:h-[100%] group-hover:from-primary">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary shadow-[0_0_15px_rgba(0,212,255,1)] group-hover:shadow-[0_0_25px_rgba(0,212,255,1)] group-hover:bg-white transition-all duration-500"></div>
+</div>
+<div class="w-1/6 bg-gradient-to-t from-primary to-transparent h-[100%] rounded-t-md group-hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-500"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto reveal-on-scroll">
+<div class="glass-card rounded-3xl p-10 md:p-20 relative overflow-hidden flex flex-col md:flex-row gap-16 group hover:shadow-[0_0_40px_rgba(0,212,255,0.15)] hover:border-primary/30 transition-all duration-700">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 group-hover:opacity-100 opacity-50 transition-opacity duration-700"></div>
+<div class="flex-1 relative z-10">
+<h2 class="font-headline-xl text-[40px] mb-6 font-bold text-white group-hover:text-primary transition-colors duration-500">Let's build the future.</h2>
+<p class="text-on-surface-variant text-lg mb-12 max-w-md">Connect with our team to discuss how Omnivexx can orchestrate your enterprise workflows.</p>
+<div class="space-y-8">
+<div>
+<h4 class="font-mono-data text-sm text-on-surface-variant uppercase tracking-wider mb-2">Email</h4>
+<a class="text-xl font-subheading text-primary hover:text-white transition-colors flex items-center gap-2 group/link" href="mailto:hello@omnivexx.com">
+                    hello@omnivexx.com <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+<div class="flex gap-12">
+<div>
+<h4 class="font-mono-data text-sm text-on-surface-variant uppercase tracking-wider mb-2">San Francisco</h4>
+<p class="text-on-surface">100 Market St<br/>CA 94105</p>
+</div>
+<div>
+<h4 class="font-mono-data text-sm text-on-surface-variant uppercase tracking-wider mb-2">London</h4>
+<p class="text-on-surface">1st Avenue<br/>EC1A 1BB</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 relative z-10 bg-surface/50 p-8 rounded-2xl border border-white/5 group-hover:border-primary/20 transition-colors duration-500 hover:shadow-[0_0_20px_rgba(0,212,255,0.05)]">
+<form class="flex flex-col gap-6">
+<div class="flex flex-col gap-2 group/input">
+<label class="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Name</label>
+<input class="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300" placeholder="Jane Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-2 group/input">
+<label class="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Email</label>
+<input class="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300" placeholder="jane@company.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2 group/input">
+<label class="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Message</label>
+<textarea class="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300 resize-none" placeholder="How can we help?" rows="4"></textarea>
+</div>
+<button class="magnetic primary-gradient-btn text-white px-8 py-4 rounded-xl font-subheading text-subheading transition-all duration-300 glow-hover w-full font-semibold mt-2" type="button">
+<span class="magnetic-inner inline-block pointer-events-none">Send Message</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto reveal-on-scroll">
+<div class="glass-card rounded-3xl p-12 md:p-24 text-center relative overflow-hidden group hover:shadow-[0_0_50px_rgba(0,212,255,0.2)] hover:border-primary/50 transition-all duration-700">
+<!-- Abstract background for CTA -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/5 via-primary/10 to-primary-container/5 group-hover:opacity-70 opacity-100 transition-opacity duration-700"></div>
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/80 to-transparent group-hover:via-white transition-colors duration-500"></div>
+<div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+<span class="material-symbols-outlined text-[56px] text-primary mb-8 drop-shadow-[0_0_15px_rgba(0,212,255,0.5)] group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(0,212,255,0.8)] transition-all duration-500" style="font-variation-settings: 'FILL' 1;">power</span>
+<h2 class="font-headline-xl text-[48px] md:text-[56px] mb-6 font-bold text-white group-hover:text-primary transition-colors duration-500">Automate Your Future</h2>
+<p class="font-subheading text-subheading md:text-[20px] text-on-surface-variant mb-12">
+                        Join the next generation of enterprises operating with autonomous precision.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-lg group/input-wrapper">
+<input class="bg-surface/80 border border-white/10 rounded-xl px-6 py-4 font-mono-data text-mono-data text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full shadow-[0_0_0_0_rgba(0,212,255,0)] hover:border-primary/50 focus:shadow-[0_0_25px_rgba(0,212,255,0.3)] transition-all duration-300 backdrop-blur-sm" placeholder="Enter work email" type="email"/>
+<button class="magnetic primary-gradient-btn text-white px-10 py-4 rounded-xl font-subheading text-subheading transition-all duration-300 glow-hover whitespace-nowrap hover:scale-105 active:scale-95">
+<span class="magnetic-inner inline-block pointer-events-none">Get Started</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface/90 backdrop-blur-lg w-full py-20 border-t border-white/5 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6 flex items-center gap-3 hover:text-white transition-colors cursor-pointer">
+<img alt="Omnivexx Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLto7zld-O7B9rcyd0nqtkdCQSJeExSD_fiyQ35tOohkJuTU0QF0TS7kXLy4XwGYaueLTcXH01J8rV7XvZ1imKJylJ6cXOIxIJ3qDqNckk2Q-SJM-fFYyWDfxRh059eIXRrrxL20lgej_IthzOwVam7y52fRCy6qC_4ZLzzB8DGcxTYKpgdfvbWT7VEU4SUTUNDjMBodrCEt7EA8smUB55FDT82-fawDDfWVyoyfeQOprBikr7YNM1vMpA"/> Omnivexx
+                </div>
+<p class="text-on-surface-variant text-sm mt-8 opacity-70">© 2024 Omnivexx. Autonomous Precision.</p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-mono-data text-sm text-white mb-2 uppercase tracking-widest opacity-50">Platform</span>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-300" href="#">Agents</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-300" href="#">Workflows</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-300" href="#">Integrations</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-mono-data text-sm text-white mb-2 uppercase tracking-widest opacity-50">Company</span>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-300" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-300" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-300" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-mono-data text-sm text-white mb-2 uppercase tracking-widest opacity-50">Connect</span>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">mail</span> Newsletter
+                 </a>
+</div>
+</div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Scroll Reveal
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('site-header');
+        const headerInner = document.getElementById('header-inner');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                headerInner.classList.add('header-scrolled');
+            } else {
+                headerInner.classList.remove('header-scrolled');
+            }
+        });
+
+        // Magnetic Hover Effect
+        const magneticElements = document.querySelectorAll('.magnetic');
+        magneticElements.forEach(elem => {
+            const inner = elem.querySelector('.magnetic-inner');
+            
+            elem.addEventListener('mousemove', (e) => {
+                const rect = elem.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                elem.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                if(inner) {
+                    inner.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+                }
+            });
+            
+            elem.addEventListener('mouseleave', () => {
+                elem.style.transform = 'translate(0px, 0px)';
+                if(inner) {
+                    inner.style.transform = 'translate(0px, 0px)';
+                }
+            });
+        });
+    });
+</script>
+</body></html>
