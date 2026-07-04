@@ -50,8 +50,8 @@ export default function Contact() {
               <p className="text-xl font-subheading text-white mb-6">Dhimanth S Reddy</p>
               
               <h4 className="font-mono-data text-sm text-on-surface-variant uppercase tracking-wider mb-2">Email</h4>
-              <a className="text-xl font-subheading text-primary hover:text-white transition-colors flex items-center gap-2 group/link" href="mailto:xyz@gmail.com">
-                xyz@gmail.com <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">arrow_outward</span>
+              <a className="text-xl font-subheading text-primary hover:text-white transition-colors flex items-center gap-2 group/link" href="mailto:sdhim8055@gmail.com">
+                sdhim8055@gmail.com <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">arrow_outward</span>
               </a>
             </div>
             <div className="flex gap-12">
@@ -74,12 +74,12 @@ export default function Contact() {
             </div>
             <div className="flex flex-col gap-2 group/input">
               <label className="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Email</label>
-              <input name="email" required className="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300" placeholder="xyz@gmail.com" type="email"/>
+              <input name="email" required className="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300" placeholder="sdhim8055@gmail.com" type="email"/>
             </div>
             <div className="flex flex-col gap-2 group/input">
               <label className="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Service Interested In</label>
-              <select name="service" required className="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300 appearance-none text-on-surface [&>option]:text-background">
-                <option value="" disabled selected>Select a service</option>
+              <select name="service" required defaultValue="" className="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300 appearance-none text-on-surface [&>option]:text-background">
+                <option value="" disabled>Select a service</option>
                 <option value="AI Agents">AI Agents</option>
                 <option value="AI Automation">AI Automation</option>
                 <option value="AI Website Development">AI Website Development</option>
