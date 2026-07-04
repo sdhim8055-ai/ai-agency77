@@ -6,7 +6,8 @@ export default function Footer() {
           <div className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6 flex items-center gap-3 hover:text-white transition-colors cursor-pointer">
             <img alt="Omnivexx Logo" className="h-8 w-8 object-contain" src="/logo.png"/> Omnivexx
           </div>
-          <p className="text-on-surface-variant text-sm mt-8 opacity-70">© 2024 Omnivexx. Autonomous Precision.</p>
+          <p className="text-on-surface-variant text-sm mt-2 font-mono-data opacity-90">Founder: Dhimanth S Reddy</p>
+          <p className="text-on-surface-variant text-sm mt-6 opacity-70">© 2024 Omnivexx. Autonomous Precision.</p>
         </div>
         <div className="flex flex-col gap-4">
           <span className="font-mono-data text-sm text-white mb-2 uppercase tracking-widest opacity-50">Platform</span>

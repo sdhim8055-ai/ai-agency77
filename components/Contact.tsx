@@ -13,6 +13,7 @@ export default function Contact() {
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
+      service: formData.get('service'),
       message: formData.get('message'),
     };
 
@@ -41,10 +42,13 @@ export default function Contact() {
       <div className="glass-card rounded-3xl p-10 md:p-20 relative overflow-hidden flex flex-col md:flex-row gap-16 group hover:shadow-[0_0_40px_rgba(0,212,255,0.15)] hover:border-primary/30 transition-all duration-700">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 group-hover:opacity-100 opacity-50 transition-opacity duration-700"></div>
         <div className="flex-1 relative z-10">
-          <h2 className="font-headline-xl text-[40px] mb-6 font-bold text-white group-hover:text-primary transition-colors duration-500">Let's build the future.</h2>
-          <p className="text-on-surface-variant text-lg mb-12 max-w-md">Connect with our team to discuss how Omnivexx can orchestrate your enterprise workflows.</p>
+          <h2 className="font-headline-xl text-[40px] mb-6 font-bold text-white group-hover:text-primary transition-colors duration-500">Reach Out / Apply</h2>
+          <p className="text-on-surface-variant text-lg mb-12 max-w-md">Connect with our team or apply for our services. Let's discuss how Omnivexx can orchestrate your enterprise workflows.</p>
           <div className="space-y-8">
             <div>
+              <h4 className="font-mono-data text-sm text-on-surface-variant uppercase tracking-wider mb-2">Founder</h4>
+              <p className="text-xl font-subheading text-white mb-6">Dhimanth S Reddy</p>
+              
               <h4 className="font-mono-data text-sm text-on-surface-variant uppercase tracking-wider mb-2">Email</h4>
               <a className="text-xl font-subheading text-primary hover:text-white transition-colors flex items-center gap-2 group/link" href="mailto:xyz@gmail.com">
                 xyz@gmail.com <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform">arrow_outward</span>
@@ -71,6 +75,17 @@ export default function Contact() {
             <div className="flex flex-col gap-2 group/input">
               <label className="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Email</label>
               <input name="email" required className="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300" placeholder="xyz@gmail.com" type="email"/>
+            </div>
+            <div className="flex flex-col gap-2 group/input">
+              <label className="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Service Interested In</label>
+              <select name="service" required className="bg-surface/80 border border-white/10 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm hover:border-primary/50 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300 appearance-none text-on-surface [&>option]:text-background">
+                <option value="" disabled selected>Select a service</option>
+                <option value="AI Agents">AI Agents</option>
+                <option value="AI Automation">AI Automation</option>
+                <option value="AI Website Development">AI Website Development</option>
+                <option value="Website Defining">Website Defining</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
             <div className="flex flex-col gap-2 group/input">
               <label className="font-mono-data text-sm text-on-surface-variant group-focus-within/input:text-primary transition-colors">Message</label>
